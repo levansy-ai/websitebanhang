@@ -1,7 +1,6 @@
-var user = document.getElementById("user").dataset.username || "AnonymousUser"; // Cần định nghĩa `user`
 var updateBtns = document.getElementsByClassName("update-cart");
-Array.from(updateBtns).forEach((button) => {
-  button.addEventListener("click", function () {
+for (i = 0; i < updateBtns.length; i++) {
+  updateBtns[i].addEventListener("click", function () {
     var productId = this.dataset.productId;
     var action = this.dataset.action;
     console.log("product.Id", productId, "action", action);
@@ -12,12 +11,11 @@ Array.from(updateBtns).forEach((button) => {
       updateUserOrder(productId, action);
     }
   });
-});
+}
 
 function updateUserOrder(productId, action) {
   console.log("user logged in, success add");
   var url = "update_item/";
-  var csrftoken = document.querySelector("[name=csrfmiddlewaretoken]").value; // Lấy `csrftoken` từ form
   fetch(url, {
     method: "POST",
     headers: {

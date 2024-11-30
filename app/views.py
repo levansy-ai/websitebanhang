@@ -32,8 +32,8 @@ def checkout(request):
 
 def updateItem(request):
     data = json.loads(request.body)
-    productId = data["productId"]
-    action = data["action"]
+    productId = data['productId']
+    action = data['action']
     customer = request.user.customer
     product = Product.objects.get(id=productId)
     order, created = Order.objects.get_or_create(customer=customer,complete=False)
